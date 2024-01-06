@@ -42,4 +42,12 @@ public class ClientController {
         newclient.setName(client.getName());
         return ResponseEntity.ok(clientRepository.save(newclient));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delteClient(@PathVariable UUID id) {
+        Optional<Client> optionalClient = clientRepository.findById(id);
+        if (optionalClient.isEmpty()) return ResponseEntity.badRequest().build();
+        clientRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

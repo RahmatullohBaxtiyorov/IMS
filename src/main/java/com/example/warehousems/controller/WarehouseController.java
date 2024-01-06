@@ -41,6 +41,4 @@ public class WarehouseController {
         newwarehouse.setName(warehouse.getName());
         return ResponseEntity.ok(warehouseRepository.save(newwarehouse));
     }
-
-
 }

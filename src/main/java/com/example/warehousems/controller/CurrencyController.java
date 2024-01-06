@@ -42,5 +42,14 @@ public class CurrencyController {
         newcurrency.setName(currency.getName());
         return ResponseEntity.ok(currencyRepository.save(newcurrency));
     }
-    
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteCurrency(@PathVariable UUID id) {
+        Optional<Currency> optionalCurrency = currencyRepository.findById(id);
+        if (optionalCurrency.isEmpty()) return (ResponseEntity<?>) ResponseEntity.badRequest();
+        currencyRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+
+
+    }
 }

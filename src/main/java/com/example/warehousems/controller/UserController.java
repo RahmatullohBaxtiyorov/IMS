@@ -39,4 +39,15 @@ public class UserController {
         return ResponseEntity.ok(responseApi);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable UUID id) {
+        Optional<User> all = userRepository.findById(id);
+        if (all.isPresent()) {
+            userRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
+        } else
+            return ResponseEntity.badRequest().build();
+    }
+
+
 }
