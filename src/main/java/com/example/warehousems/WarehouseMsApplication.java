@@ -10,4 +10,6 @@ public class WarehouseMsApplication {
         SpringApplication.run(WarehouseMsApplication.class, args);
     }
 
+
+
 }
