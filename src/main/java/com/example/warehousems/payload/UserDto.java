@@ -3,6 +3,10 @@ package com.example.warehousems.payload;
 import com.example.warehousems.enums.RoleName;
 import lombok.Data;
 
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+
 @Data
 
 public class UserDto {
@@ -12,4 +16,5 @@ public class UserDto {
     private String code;
     private String password;
     private RoleName roleName;
+    private UUID warehousesId;
 }

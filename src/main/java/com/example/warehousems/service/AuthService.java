@@ -55,7 +55,7 @@ public class AuthService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginDto.getEmail(), loginDto.getPassword()));
         var user = userRepository.findByEmail(loginDto.getEmail()).orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        return new ResponseApi("successfull", true, jwtToken);
+        return new ResponseApi(user.getId().toString(), true, jwtToken);
 
     }
 }

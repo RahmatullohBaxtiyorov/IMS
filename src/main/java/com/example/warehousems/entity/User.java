@@ -32,8 +32,13 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
     private boolean active;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<Warehouse> warehouses;
+
+    public void setWarehouses(Set<Warehouse> warehouses) {
+        this.warehouses = warehouses;
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roleNames;
     @CreationTimestamp

@@ -2,6 +2,7 @@ package com.example.warehousems.controller;
 
 import com.example.warehousems.entity.User;
 import com.example.warehousems.payload.ResponseApi;
+import com.example.warehousems.payload.UserDto;
 import com.example.warehousems.repository.UserRepository;
 import com.example.warehousems.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,14 @@ public class UserController {
     }
 
     @PatchMapping("/user/{id}")
-    public ResponseEntity<?> editUser(@PathVariable UUID id, Map<Object, Object> fields) {
+    public ResponseEntity<?> editUser(@PathVariable UUID id, @RequestBody Map<Object, Object> fields) {
         ResponseApi responseApi = userService.editUser(id, fields);
+        return ResponseEntity.ok(responseApi);
+    }
+
+    @PatchMapping("/edit/{id}")
+    public ResponseEntity<?> editUserN(@PathVariable UUID id, @RequestBody UserDto userDto) {
+        ResponseApi responseApi = userService.editUserN(id, userDto);
         return ResponseEntity.ok(responseApi);
     }
 
