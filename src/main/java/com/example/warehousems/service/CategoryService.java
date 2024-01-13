@@ -27,7 +27,7 @@ public class CategoryService {
 
         }
         categoryRepository.save(category);
-        return new ResponseApi("successful", true);
+        return new ResponseApi("successfull", true);
     }
 
     public List<Category> getCategory() {

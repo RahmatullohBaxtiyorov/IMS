@@ -1,20 +1,15 @@
 package com.example.warehousems.service;
 
-import com.example.warehousems.entity.Attachment;
-import com.example.warehousems.entity.Category;
-import com.example.warehousems.entity.Measurement;
-import com.example.warehousems.entity.Product;
+import com.example.warehousems.entity.*;
 import com.example.warehousems.payload.ProductDto;
 import com.example.warehousems.payload.ResponseApi;
-import com.example.warehousems.repository.AttachmentRepository;
-import com.example.warehousems.repository.CategoryRepository;
-import com.example.warehousems.repository.MeasurementRepository;
-import com.example.warehousems.repository.ProductRepository;
+import com.example.warehousems.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -27,8 +22,10 @@ public class ProductService {
     AttachmentRepository attachmentRepository;
     @Autowired
     MeasurementRepository measurementRepository;
+    @Autowired
+    CurrencyRepository currencyRepository;
 
-    public ResponseApi addProduct(ProductDto productDto) {
+    public ResponseApi addProduct(ProductDto productDto){
         boolean exists = productRepository.existsByNameAndCategoryId(productDto.getName(), productDto.getCategoryId());
         if (exists) return new ResponseApi("this product already exits in this category", false);
         Optional<Category> optionalCategory = categoryRepository.findById(productDto.getCategoryId());
@@ -45,7 +42,7 @@ public class ProductService {
         Product product = new Product();
         product.setName(productDto.getName());
         product.setCategory(optionalCategory.get());
-        product.setCode("frontenddan kod generatsiya keladi");
+        product.setCode(String.valueOf(new Random().nextInt()));
 //        product.setPhoto(optionalAttachment.get()); // bu kod ishlashi uchun fayl yuklanishi kerak
         product.setPhoto(null);
         product.setMeasurement(optionalMeasurement.get());

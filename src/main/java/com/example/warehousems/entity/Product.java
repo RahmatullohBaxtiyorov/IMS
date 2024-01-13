@@ -24,4 +24,5 @@ public class Product extends AbsEntity {
     @ManyToOne(optional = false)
     private Measurement measurement;
 
+
 }
