@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/output")
+@CrossOrigin
 public class OutputController {
     @Autowired
     OutputService outputService;

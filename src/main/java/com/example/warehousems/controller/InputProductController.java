@@ -16,6 +16,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/inputproduct")
+@CrossOrigin
 public class InputProductController {
 
     @Autowired

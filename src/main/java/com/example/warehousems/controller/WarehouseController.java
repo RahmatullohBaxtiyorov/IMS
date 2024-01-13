@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/warehouse")
+@CrossOrigin
 public class WarehouseController {
     @Autowired
     WarehouseRepository warehouseRepository;

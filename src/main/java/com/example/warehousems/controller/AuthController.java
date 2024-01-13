@@ -8,14 +8,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
+@CrossOrigin
 public class AuthController {
 
     @Autowired
@@ -24,13 +22,14 @@ public class AuthController {
     @PostMapping("/register")
     public HttpEntity<?> registerUser(@RequestBody RegisterDto registerDto) {
         ResponseApi responseApi = authService.registerUser(registerDto);
-        return ResponseEntity.status(responseApi.isSuccess() ? 201 : 409).body(responseApi.getMessage() + "  token  "+ responseApi.getObject());
+        return ResponseEntity.status(responseApi.isSuccess() ? 201 : 409).body(responseApi.getMessage() + "  token  " + responseApi.getObject());
     }
+
 
     @PostMapping("/login")
     public HttpEntity<?> loginUser(@RequestBody LoginDto loginDto) {
         ResponseApi responseApi = authService.loginUser(loginDto);
-        return ResponseEntity.status(responseApi.isSuccess() ? 201 : 409).body(responseApi.getMessage() + "  token  "+ responseApi.getObject());
+        return ResponseEntity.status(responseApi.isSuccess() ? 201 : 409).body(responseApi.getMessage() + "  token  " + responseApi.getObject());
     }
 
 }

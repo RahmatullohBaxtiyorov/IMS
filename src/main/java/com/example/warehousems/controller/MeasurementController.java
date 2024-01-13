@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/measurement")
+@CrossOrigin
 public class MeasurementController {
 
     @Autowired

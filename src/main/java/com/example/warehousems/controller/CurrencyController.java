@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/currency")
+@CrossOrigin
 public class CurrencyController {
     @Autowired
     CurrencyRepository currencyRepository;

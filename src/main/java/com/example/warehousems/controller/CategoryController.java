@@ -12,6 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/category")
+@CrossOrigin
 public class CategoryController {
     @Autowired
     CategoryService categoryService;

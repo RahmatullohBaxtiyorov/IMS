@@ -13,6 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin/supplier")
+@CrossOrigin
 public class SupplierController {
     @Autowired
     SupplierRepository supplierRepository;
