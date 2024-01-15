@@ -11,7 +11,6 @@ public class InputProductDto {
     private UUID productId;
     private Double amount;
     private Double price;
-    private Date expireDate;
     private UUID inputId;
 
 }

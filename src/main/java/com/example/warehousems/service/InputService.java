@@ -5,7 +5,6 @@ import com.example.warehousems.entity.Input;
 import com.example.warehousems.entity.Supplier;
 import com.example.warehousems.entity.Warehouse;
 import com.example.warehousems.payload.InputDto;
-import com.example.warehousems.payload.ResponseApi;
 import com.example.warehousems.repository.CurrencyRepository;
 import com.example.warehousems.repository.InputRepository;
 import com.example.warehousems.repository.SupplierRepository;
@@ -15,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -39,6 +39,8 @@ public class InputService {
         input.setCurrency(optionalCurrency.get());
         input.setWarehouse(optionalWarehouse.get());
         input.setSupplier(optionalSupplier.get());
+        input.setCode(String.valueOf(Math.abs(new Random().nextInt())));
+        input.setFactureNumber(String.valueOf(UUID.randomUUID()));
         inputRepository.save(input);
         return ResponseEntity.ok("success");
 

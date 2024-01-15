@@ -11,6 +11,9 @@ import com.example.warehousems.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -31,7 +34,7 @@ public class InputProductService {
             inputProduct.setInput(optionalInput.get());
             inputProduct.setPrice(inputProductDto.getPrice());
             inputProduct.setAmount(inputProductDto.getAmount());
-            inputProduct.setExpireDate(inputProductDto.getExpireDate());
+            inputProduct.setExpireDate(Date.from(LocalDate.now().plusDays(3).plusMonths(3).plusYears(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
             inputProductRepository.save(inputProduct);
             return new ResponseApi("success", true);
         }
