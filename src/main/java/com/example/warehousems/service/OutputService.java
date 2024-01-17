@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -50,10 +51,10 @@ public class OutputService {
         output.setWarehouse(optionalWarehouse.get());
         output.setClient(optionalClient.get());
         output.setCurrency(optionalCurrency.get());
-        output.setCode(outputDto.getCode());
-        output.setFactureNumber(outputDto.getFactureNumber());
+        output.setCode(String.valueOf(Math.abs(new Random().nextInt())));
+        output.setFactureNumber(String.valueOf(UUID.randomUUID()));
         outputRepository.save(output);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("success");
 
 
     }
